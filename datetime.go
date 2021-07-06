@@ -21,6 +21,10 @@ const (
 	DateTimeFormatLong
 	DateTimeFormatMedium
 	DateTimeFormatShort
+	WeekdayFormatFull
+	WeekdayFormatLong
+	WeekdayFormatMedium
+	WeekdayFormatShort
 )
 
 // Characters with special meaning in a datetime string:
@@ -118,6 +122,14 @@ func (t *Translator) FormatDateTime(format int, datetime time.Time) (string, err
 		datePattern := strings.Trim(t.rules.DateTime.Formats.Date.Short, " ,")
 		timePattern := strings.Trim(t.rules.DateTime.Formats.Time.Short, " ,")
 		pattern = getDateTimePattern(t.rules.DateTime.Formats.DateTime.Short, datePattern, timePattern)
+	case WeekdayFormatFull:
+		pattern = strings.Repeat(string(datetimeFormatUnitDayOfWeek), datetimeFormatLengthWide)
+	case WeekdayFormatLong:
+		pattern = strings.Repeat(string(datetimeFormatUnitDayOfWeek), datetimeFormatLengthAbbreviated)
+	case WeekdayFormatMedium:
+		pattern = strings.Repeat(string(datetimeFormatUnitDayOfWeek), datetimeFormatLength2Plus)
+	case WeekdayFormatShort:
+		pattern = strings.Repeat(string(datetimeFormatUnitDayOfWeek), datetimeFormatLengthNarrow)
 	default:
 		return "", translatorError{message: "unknown datetime format" + pattern[0:1]}
 	}

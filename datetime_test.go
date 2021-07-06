@@ -62,6 +62,18 @@ func (s *MySuite) TestFormatDateTime(c *C) {
 	dtShort, err := tEn.FormatDateTime(DateTimeFormatShort, datetime)
 	c.Check(err, IsNil)
 
+	wdFull, err := tEn.FormatDateTime(WeekdayFormatFull, datetime)
+	c.Check(err, IsNil)
+
+	wdLong, err := tEn.FormatDateTime(WeekdayFormatLong, datetime)
+	c.Check(err, IsNil)
+
+	wdMedium, err := tEn.FormatDateTime(WeekdayFormatMedium, datetime)
+	c.Check(err, IsNil)
+
+	wdShort, err := tEn.FormatDateTime(WeekdayFormatShort, datetime)
+	c.Check(err, IsNil)
+
 	c.Check(dFull, Equals, "Monday, January 2, 2006")
 	c.Check(dLong, Equals, "January 2, 2006")
 	c.Check(dMedium, Equals, "Jan 2, 2006")
@@ -74,6 +86,10 @@ func (s *MySuite) TestFormatDateTime(c *C) {
 	c.Check(dtLong, Equals, "January 2, 2006 at 3:04:05 PM")
 	c.Check(dtMedium, Equals, "Jan 2, 2006, 3:04:05 PM")
 	c.Check(dtShort, Equals, "1/2/06, 3:04 PM")
+	c.Check(wdFull, Equals, "Monday")
+	c.Check(wdLong, Equals, "Mon")
+	c.Check(wdMedium, Equals, "Mo")
+	c.Check(wdShort, Equals, "M")
 
 	// should check other locales too - maybe all of them?
 	locales := map[string]string{
