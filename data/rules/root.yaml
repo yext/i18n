@@ -46,6 +46,8 @@ currencies:
     symbol: NZ$
   PEN:
     symbol: PEN
+  SAR:
+    symbol: "\u0631.\u0633.\u200F"
   THB:
     symbol: "\u0E3F"
   TWD:
