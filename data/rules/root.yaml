@@ -64,6 +64,8 @@ currencies:
     symbol: CFA
   XPF:
     symbol: CFPF
+  ZAR:
+    symbol: R
 datetime:
   timeSeparator: ':'
   formats:
